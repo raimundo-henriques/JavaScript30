@@ -130,13 +130,31 @@
   <script>
     const panels = document.querySelectorAll('.panel');
 
-    const handleClick = (event) => {
-      event.target.classList.toggle('open');
-      event.target.classList.toggle('open-active');
+    // function toggleOpen() {
+    //   this.classList.toggle('open');
+    // }
+
+    // function toggleOpenActive(event) {
+    //   if (event.propertyName === 'flex-grow') {
+    //     this.classList.toggle('open-active');
+    //   }
+    // }
+
+    const toggleOpen = (event) => {
+      event.currentTarget.classList.toggle('open');
     }
 
+    const toggleOpenActive = (event) => {
+      if (event.propertyName === 'flex-grow') {
+        event.currentTarget.classList.toggle('open-active');
+      }
+    }
     panels.forEach((panel) => {
-      panel.addEventListener('click', handleClick);
+      panel.addEventListener('click', toggleOpen);
+    });
+
+    panels.forEach((panel) => {
+      panel.addEventListener('transitionend', toggleOpenActive);
     });
 
   </script>
