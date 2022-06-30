@@ -99,9 +99,13 @@
   const checkboxes = Array.from(document.querySelectorAll('input'));
   console.log(checkboxes);
 
-  function handleClick(event) {
+  function handleClick(lastEvent, newEvent) {
+    if (newEvent.shiftKey === true) {
+      if (lastEvent !== newEvent) {
+        console.log("How to proceed?")
+      }
+    }
 
-    console.log(event.currentTarget);
   }
 
   checkboxes.forEach(checkbox => {
